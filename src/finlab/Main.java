@@ -73,6 +73,28 @@ public class Main {
     }// end of depthFirst method
 
     public void breadthFirst() {
+        try {
+            if (graph.getVertices().isEmpty()) {
+                loadFile();
+            }
+    
+            GraphTraversal graphTraversal = new GraphTraversal(graph);
+            String startVertexIdString = readString("Enter a starting vertex ID for Breadth First Traversal: ");
+            
+            Vertex startVertex = graph.getVertexById(startVertexIdString); 
+    
+            if (startVertex == null) {
+                throw new IllegalArgumentException("Invalid vertex ID. Please enter a valid vertex ID.");
+            }
+
+        String result = graphTraversal.breadthFirstTraversal(startVertex);
+        System.out.println("Breadth First Traversal Result: " + result);
+       } catch (IllegalArgumentException e) {
+        System.out.println(e.getMessage());
+       } catch (Exception e) {
+        System.out.println("An error occured during Breadth First Traversal: " + e.getMessage());
+       }
+
     } // end of breadthFirst method
 
     public void shortestPath() {
