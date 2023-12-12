@@ -38,7 +38,7 @@ public class LoadFile {
             displayGraph(graph);
 
         } catch (Exception e) {
-            System.out.println("Error not found.");
+            System.out.println("Error! File not found.");
         }
         return graph;
     } // end of loadFile method
@@ -72,6 +72,8 @@ public class LoadFile {
             frame.add(graphPanel);
 
             frame.setVisible(true);
+            frame.setLocationRelativeTo(null);
+
         } else {
             System.out.println("No graph data to visualize. Load a graph first.");
         }
@@ -119,11 +121,21 @@ public class LoadFile {
             for (Vertex node : graph.getVertices()) {
                 for (finlab.Edge edge : node.getConnectedEdges()) {
                     Vertex adjacentNode = edge.getDestination();
+
+                    // Draw line
                     g.drawLine(node.getXPos(), node.getYPos(), adjacentNode.getXPos(), adjacentNode.getYPos());
+
+                    // Draw edge weight
+                    int weightX = (node.getXPos() + adjacentNode.getXPos()) / 2;
+                    int weightY = (node.getYPos() + adjacentNode.getYPos()) / 2;
+                    g.setColor(Color.BLUE);
+                    g.drawString(String.valueOf(edge.getWeight()), weightX, weightY);
+                    g.setColor(Color.BLACK);
                 }
             }
 
             g.setColor(Color.BLACK);
+
             for (Vertex node : graph.getVertices()) {
                 g.fillOval(node.getXPos() - 15, node.getYPos() - 15, 30, 30);
                 g.setColor(Color.WHITE);

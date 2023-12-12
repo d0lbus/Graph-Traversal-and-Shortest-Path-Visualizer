@@ -49,6 +49,27 @@ public class Main {
     } // end of loadFile method
 
     public void depthFirst() {
+        try {
+            if (graph.getVertices().isEmpty()) {
+                loadFile();
+            }
+
+            GraphTraversal graphTraversal = new GraphTraversal(graph);
+            String startVertexIdString = readString("Enter a starting vertex ID for Depth First Traversal: ");
+
+            Vertex startVertex = graph.getVertexById(startVertexIdString);
+
+            if (startVertex == null) {
+                throw new IllegalArgumentException("Invalid vertex ID. Please enter a valid vertex ID.");
+            }
+
+            String result = graphTraversal.depthFirstTraversal(startVertex);
+            System.out.println("Depth First Traversal Result: " + result);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("An error occurred during Depth First Traversal: " + e.getMessage());
+        }
     }// end of depthFirst method
 
     public void breadthFirst() {
