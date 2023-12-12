@@ -44,4 +44,30 @@ public class GraphTraversal {
                 .orElse(null);
     }
 
-}
+    public String breadthFirstTraversal (Vertex startVertex) {
+        StringBuilder result = new StringBuilder ();
+        Set<Vertex> visited = new HashSet<>();
+        LinkedList<Vertex> queue = new LinkedList<>();
+        queue.add(startVertex);
+        visited.add(startVertex);
+
+        System.out.println("=========================================================");
+        System.out.println("BREADTH FIRST TRAVERSAL");
+
+        while (!queue.isEmpty()) {
+            startVertex = queue.poll();
+            result.append(startVertex).append(" ");
+    
+            for (Edge edge : startVertex.getConnectedEdges()) {
+                if (!visited.contains(edge.getDestination())) {
+                    visited.add(edge.getDestination());
+                    queue.add(edge.getDestination());
+                }
+            }
+        }
+        return result.toString();
+    } 
+} // end of breadthFirstTraversal
+
+
+
