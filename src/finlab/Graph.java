@@ -1,4 +1,32 @@
 package finlab;
 
+import java.util.*;
+
 public class Graph {
+    private final List<Vertex> vertices;
+    private final Map<String, Vertex> vertexMap;
+
+    public Graph() {
+        this.vertices = new ArrayList<>();
+        this.vertexMap = new HashMap<>();
+    }
+
+    public void addVertex(Vertex vertex) {
+        vertices.add(vertex);
+        vertexMap.put(vertex.getVertexId(), vertex);
+    }
+
+    public void addEdge(Vertex source, Vertex destination, Edge edge) {
+        source.addConnectedEdge(edge);
+        destination.addConnectedEdge(edge);
+    }
+
+    public List<Vertex> getVertices() {
+        return vertices;
+    }
+
+    public Vertex getVertexById(String id) {
+        return vertexMap.get(id);
+    }
+
 }
