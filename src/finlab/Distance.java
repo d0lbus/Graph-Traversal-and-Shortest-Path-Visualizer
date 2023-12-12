@@ -1,6 +1,5 @@
 package finlab;
 
-package finlab;
 public class Distance {
     private final Vertex graphNode;
     private final double distanceValue;
