@@ -122,7 +122,7 @@ public class Main {
        } catch (IllegalArgumentException e) {
         System.out.println(e.getMessage());
        } catch (Exception e) {
-        System.out.println("An error occured during Breadth First Traversal: " + e.getMessage());
+        System.out.println("An error occurred during Breadth First Traversal: " + e.getMessage());
        }
 
     } // end of breadthFirst method
@@ -131,6 +131,23 @@ public class Main {
      * Placeholder method for performing the shortest path operation.
      */
     public void shortestPath() {
+        try {
+            if (graph.getVertices().isEmpty()) {
+                loadFile();
+            }
+
+            GraphTraversal graphTraversal = new GraphTraversal(graph);
+
+            String sourceVertexIdString = readString("Enter the source vertex ID for the Shortest Path: ");
+            String destinationVertexIdString = readString("Enter the destination vertex ID for the Shortest Path: ");
+
+            String result = graphTraversal.shortestPath(sourceVertexIdString, destinationVertexIdString);
+            System.out.println(result);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println("An error occurred during Shortest Path calculation: " + e.getMessage());
+        }
     } // end of shortestPath method
 
     /**

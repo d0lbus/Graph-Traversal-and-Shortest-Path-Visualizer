@@ -76,7 +76,7 @@ public class GraphTraversal {
         return result.toString();
     }
 
-    public String shortestPath(int sourceId, int destinationId) {
+    public String shortestPath(String sourceId, String destinationId) {
         Vertex root = getVertex(sourceId);
         Vertex destination = getVertex(destinationId);
 
@@ -97,27 +97,26 @@ public class GraphTraversal {
                 if (!visited.contains(endVertex)) {
                     double newDistance = distanceMap.get(currentVertex) + edge.getWeight();
 
-
-                if (newDistance < distanceMap.getOrDefault(endVertex, Double.MAX_VALUE)) {
-                    distanceMap.put(endVertex, newDistance);
-                    previousVertexMap.put(endVertex, currentVertex);
-                    queue.add(endVertex);
+                    if (newDistance < distanceMap.getOrDefault(endVertex, Double.MAX_VALUE)) {
+                        distanceMap.put(endVertex, newDistance);
+                        previousVertexMap.put(endVertex, currentVertex);
+                        queue.add(endVertex);
                     }
                 }
             }
         }
 
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        double shortestPath = Double.parseDouble(decimalFormat.format(distanceMap.getOrDefault(destination, Double.MAX_VALUE)));
 
-    DecimalFormat decimalFormat = new DecimalFormat("#.##");
-    double shortestPath = Double.parseDouble(decimalFormat.format(distanceMap.getOrDefault(destination, Double.MAX_VALUE)));
-
-    shortestPathVertices = new StringBuilder();
-        if(shortestPath !=Double.MAX_VALUE) {
-        constructShortestPath(previousVertexMap, destination);
-        return shortestPath + "";
+        shortestPathVertices = new StringBuilder();
+        if (shortestPath != Double.MAX_VALUE) {
+            constructShortestPath(previousVertexMap, destination);
+            return "Shortest Path from " + sourceId + " to " + destinationId + ": " + shortestPath + "\nShortest Path Sequence: " + shortestPathVertices;
+        }
+        return "There is no path from " + sourceId + " to " + destinationId;
     }
-        return"There is no path from "+sourceId +" to "+destinationId;
-}
+
 
     public void constructShortestPath(Map<Vertex, Vertex> previousVertexMap, Vertex destination) {
         Vertex current = destination;
@@ -136,7 +135,8 @@ public class GraphTraversal {
     public String getShortestPathVertices() {
         return shortestPathVertices.toString();
     }
-} // end of breadthFirstTraversal
+
+} // end of GraphTraversal class
 
 
 
