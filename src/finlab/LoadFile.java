@@ -11,9 +11,19 @@ import java.io.FileNotFoundException;
 import javax.swing.*;
 import java.util.*;
 
+/**
+ * The LoadFile class is responsible for loading graph data from a file,
+ * creating the graph, and displaying it.
+ */
 public class LoadFile {
-    static Graph graph = new Graph();
+    static Graph graph = new Graph(); // The static graph to store the loaded data.
 
+    /**
+     * Loads graph data from a file and displays the graph.
+     *
+     * @return The graph loaded from the file.
+     * @throws FileNotFoundException If the specified file is not found.
+     */
     public Graph loadFile() throws FileNotFoundException {
         try {
             File file = new File("testGraph.txt");
@@ -48,6 +58,12 @@ public class LoadFile {
         return graph;
     } // end of loadFile method
 
+    /**
+     * Reads a file and returns a Scanner for the file.
+     *
+     * @param file The file to be read.
+     * @return A Scanner for the file.
+     */
     private static Scanner readFile(File file) {
         try {
             return new Scanner(file);
@@ -56,7 +72,14 @@ public class LoadFile {
         }
     } // end of Scanner method
 
-
+    /**
+     * Sets the position of a vertex with the given ID or creates a new vertex if not found.
+     *
+     * @param nodeId The ID of the vertex.
+     * @param x      The x-coordinate of the vertex.
+     * @param y      The y-coordinate of the vertex.
+     * @return The vertex with the specified ID.
+     */
     private static Vertex position(String nodeId, int x, int y) {
         Vertex vertex = graph.getVertexById(nodeId);
         if (vertex == null) {
@@ -68,6 +91,11 @@ public class LoadFile {
         return vertex;
     } // end of Vertex method
 
+    /**
+     * Displays the graph using a graphical user interface.
+     *
+     * @param graph The graph to be displayed.
+     */
     public static void displayGraph(finlab.Graph graph) {
         if (graph != null && !graph.getVertices().isEmpty()) {
             JFrame frame = new JFrame("Graph Display");
@@ -85,13 +113,24 @@ public class LoadFile {
         }
     } // end of displayGraph method
 
+    /**
+     * The GraphPanel class is a JPanel for displaying the graph.
+     */
     public static class GraphPanel extends JPanel {
         private final finlab.Graph graph;
 
+        /**
+         * Constructs a GraphPanel with the given graph.
+         *
+         * @param graph The graph to be displayed.
+         */
         public GraphPanel(finlab.Graph graph) {
             this.graph = graph;
         }
 
+        /**
+         * Adjusts the positions of the nodes in the graph.
+         */
         private void adjustNodePositions() {
             int panelWidth = getWidth();
             int panelHeight = getHeight();
@@ -118,6 +157,11 @@ public class LoadFile {
             graph.getVertexById("E").setYPos(centerY + 2 * spacingY);
         }
 
+        /**
+         * Paints the components of the graph on the panel.
+         *
+         * @param g The Graphics object.
+         */
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -128,10 +172,8 @@ public class LoadFile {
                 for (finlab.Edge edge : node.getConnectedEdges()) {
                     Vertex adjacentNode = edge.getDestination();
 
-                    // Draw line
                     g.drawLine(node.getXPos(), node.getYPos(), adjacentNode.getXPos(), adjacentNode.getYPos());
 
-                    // Draw edge weight
                     int weightX = (node.getXPos() + adjacentNode.getXPos()) / 2;
                     int weightY = (node.getYPos() + adjacentNode.getYPos()) / 2;
                     g.setColor(Color.BLUE);
@@ -150,19 +192,30 @@ public class LoadFile {
             }
         }
 
+        /**
+         * Gets the preferred size of the panel.
+         *
+         * @return The preferred size.
+         */
         @Override
         public Dimension getPreferredSize() {
             return new Dimension(getWidth(), getHeight());
         }
     }
 
+    /**
+     * Prints the illustration of the graph to the console.
+     *
+     * @param graph The graph to be illustrated.
+     */
     public static void illustrateGraph(finlab.Graph graph) {
+        System.out.println("=========================================================");
         System.out.println("Graph Illustration:");
         for (Vertex node : graph.getVertices()) {
             for (finlab.Edge edge : node.getConnectedEdges()) {
                 Vertex adjacentNode = edge.getDestination();
                 if (!node.getVertexId().equals(adjacentNode.getVertexId())) {
-                    System.out.print(node.getVertexId() + " -- " + adjacentNode.getVertexId() +
+                    System.out.print(node.getVertexId() + " to " + adjacentNode.getVertexId() +
                             ", Weight: " + edge.getWeight() + "     ");
                 }
             }
