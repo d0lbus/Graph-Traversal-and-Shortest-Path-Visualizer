@@ -1,3 +1,10 @@
+/**
+ * @author Chloe Lee San Miguel
+ * @author Nichole Jhoy Escano
+ * @author Freskkie Earl Encarnacion
+ * @author Jan Dolby Aquino
+ */
+
 package finlab;
 
 import java.text.DecimalFormat;

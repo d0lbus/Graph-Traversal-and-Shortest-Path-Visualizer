@@ -1,11 +1,27 @@
+/**
+ * @author Chloe Lee San Miguel
+ * @author Freskkie Earl Encarnacion
+ * @author Nichole Jhoy Escano
+ * @author Jan Dolby Aquino
+ */
+
 package finlab;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * The Main class contains the main program for interacting with the graph.
+ */
 public class Main {
     private Scanner kbd = new Scanner(System.in);
     private Graph graph = new Graph();
+
+    /**
+     * The main method that initializes the program and runs the main menu loop.
+     *
+     * @param args Command line arguments (not used).
+     */
     public static void main (String[] args){
         Main program;
         try {
@@ -16,6 +32,9 @@ public class Main {
         }
     }
 
+    /**
+     * The main loop of the program that displays the main menu and processes user choices.
+     */
     public void run() {
         int choice = 0;
         while (choice != 5) {
@@ -43,11 +62,19 @@ public class Main {
         System.exit(0);
     } // end of run method
 
+    /**
+     * Loads the graph data from a file.
+     *
+     * @throws FileNotFoundException If the specified file is not found.
+     */
     public void loadFile() throws FileNotFoundException {
         LoadFile loadfile = new LoadFile();
         graph = loadfile.loadFile();
     } // end of loadFile method
 
+    /**
+     * Performs a depth-first traversal of the graph.
+     */
     public void depthFirst() {
         try {
             if (graph.getVertices().isEmpty()) {
@@ -72,6 +99,9 @@ public class Main {
         }
     }// end of depthFirst method
 
+    /**
+     * Performs a breadth-first traversal of the graph.
+     */
     public void breadthFirst() {
         try {
             if (graph.getVertices().isEmpty()) {
@@ -97,9 +127,15 @@ public class Main {
 
     } // end of breadthFirst method
 
+    /**
+     * Placeholder method for performing the shortest path operation.
+     */
     public void shortestPath() {
     } // end of shortestPath method
 
+    /**
+     * Displays the main menu options to the user.
+     */
     public void mainMenu() {
         System.out.println("=========================================================");
         System.out.println("|                  FINAL GROUP PROJECT                  |");
@@ -111,9 +147,14 @@ public class Main {
         System.out.println("=========================================================");
     } // end of mainMenu method
 
+    /**
+     * Reads a string input from the user with a specified prompt message.
+     *
+     * @param promptMessage The prompt message to display to the user.
+     * @return The string entered by the user.
+     */
     public String readString(String promptMessage) {
         System.out.print(promptMessage);
         return kbd.nextLine();
     } // end of readString method
-
-}
+} // end of Main class

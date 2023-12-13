@@ -1,3 +1,8 @@
+/**
+ * @author Chloe Lee San Miguel
+ * @author Freskkie Earl Encarnacion
+ */
+
 package finlab;
 
 import java.awt.*;
@@ -50,6 +55,7 @@ public class LoadFile {
             throw new RuntimeException(ex);
         }
     } // end of Scanner method
+
 
     private static Vertex position(String nodeId, int x, int y) {
         Vertex vertex = graph.getVertexById(nodeId);
