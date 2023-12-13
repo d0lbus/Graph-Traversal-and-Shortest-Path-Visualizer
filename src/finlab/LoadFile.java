@@ -1,4 +1,27 @@
 /**
+ * ALGORITHMS:
+ * LoadFile responsible for loading graph data from a file, constructing a graph, 
+ * and displaying it using Java Swing. The class contains several methods.
+ * 
+ * loadFile(), which attempts to read graph data from the file "testGraph.txt" 
+ * using a Scanner. For each line in the file, it extracts source and destination 
+ * vertices along with their weights, creates corresponding vertices with random 
+ * positions, and establishes edges between them, adding them to the static graph 
+ * instance.
+ * 
+ * The displayGraph() method utilizes Java Swing to create a JFrame for visualization, 
+ * featuring a nested class GraphPanel extending JPanel to handle the rendering of the 
+ * graph.
+ * 
+ * The illustrateGraph() method prints a textual representation of the graph to the 
+ * console. The program adjusts node positions based on a predefined layout algorithm 
+ * in the GraphPanel class.
+ * 
+ * The main execution point typically involves creating an instance of LoadFile and 
+ * invoking the loadFile() method to execute the entire process, including loading, 
+ * constructing, and visually presenting the graph. 
+ * 
+ * 
  * @author Chloe Lee San Miguel
  * @author Freskkie Earl Encarnacion
  */
