@@ -21,7 +21,7 @@
  * invoking the loadFile() method to execute the entire process, including loading, 
  * constructing, and visually presenting the graph. 
  * 
- * 
+ *
  * @author Chloe Lee San Miguel
  * @author Freskkie Earl Encarnacion
  */
