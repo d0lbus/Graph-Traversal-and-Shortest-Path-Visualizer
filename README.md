@@ -1,38 +1,61 @@
-# IT212_9449_GroupD_FinalProject
+# Graph Traversal and Shortest Path Visualizer
+The Graph Traversal and Shortest Path Visualizer is a Java-based application that demonstrates common graph algorithms, including **DFS, BFS, and Shortest Path**. It allows users to load a graph from file input, visualize traversals, and compute shortest paths between vertices. This project showcases knowledge of data structures, algorithms, and Java programming.
 
-## Group
-- AQUINO, Jan Dolby
-- ENCARNACION, Ma. Earl Freskkie 
-- ESCANO, Nichlole Jhoy
-- MALALUAN, Arvin
-- RAZO, Ma. Lourdez Shaine
-- SAN MIGUEL, Chloe' Lee
-- TALOSIG, Manuel Allan Cian
+## Features
+- **Load Graphs from File** – Import graph structures from `testGraph.txt`  
+- **Graph Traversal** – Run and display **Depth-First Search (DFS)** and **Breadth-First Search (BFS)**  
+- **Shortest Path Calculation** – Find and display the shortest path between two vertices  
+- **Custom Graph Classes** – Implements `Graph`, `Vertex`, `Edge`, and `Distance` for graph representation  
+- **Interactive Menu** – Console-based menu for choosing algorithms (DFS, BFS, Shortest Path)  
 
-## Specifications
-```
-The group is tasked to create an application having the following menu options:
-1 load file containing the graph's data
-2 Perform Depth First Traversal of the graph
-3 Perform Breadth First Traversal of the graph
-4 Show the shortest path from one vertex to another
-5 Exit
+## Tech Stack 
+- **Language:** Java  
+- **IDE:** IntelliJ IDEA / NetBeans / Eclipse  
+- **UI/IO:** Java Swing (for visualization) & console menu  
+- **Version Control:** Git & GitHub  
 
-When the user chooses option 1, the program shows the content-format of the file that the file should have so
-that your program will be able to read the text file properly. Display a message whether the file has been read
-successfully or not. 
+## Installation & Setup
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/Graph-Traversal-and-Shortest-Path-Visualizer.git
+   cd graph-traversal-visualizer/src/finlab
 
-Note: Assume that all the edges will have a positive weight.
+2. **Compile the project**
+   ```bash
+   javac *.java
 
-If the user chooses options 2 or 3, the starting vertex will be asked from the user and the program will
-perform the respective chosen traversal approach with the specified vertex. The result of traversal is then
-shown to the user or an error message may be shown if the starting vertex is not valid or if there is no
-successfully loaded graph.
+3. **Run the application**
+   ```bash
+   java Main
 
-If the user chooses option 4, the user is asked to input the starting vertex. The program will then look for the
-shortest path from the starting vertex to all the other (possible) vertices in the graph using Dijkstra's single
-source shortest path algorithm. Display the weight/cost of traversing the graph from the starting vertex to the
-corresponding vertices.
+4. **Provide input**
+   - Graph data is loaded from testGraph.txt
+   - Follow the console menu to select:
+     - 1 → Load File
+     - 2 → Depth-First Traversal
+     - 3 → Breadth-First Traversal
+     - 4 → Shortest Path
 
-The program exits when the user has chosen option 5 from the menu of options.
-```
+## Usage
+- Start the program and choose an algorithm from the menu
+- DFS/BFS results will list the order of visited vertices
+- Shortest Path will display the minimum path between chosen nodes
+
+## Support
+For help, please contact the project maintainers.  
+
+## Contributing
+This project is not open for contributions.
+
+## Authors and Acknowledgment
+Developed by:  
+- Aquino, Jan Dolby
+- Encarnacion, Ma. Earl Freskkie 
+- Escaño, Nichlole Jhoy
+- Malaluan, Arvin
+- Razo, Ma. Lourdez Shaine
+- San Miguel, Chloe' Lee
+- Talosig, Manuel Allan Cian
+
+## Project Status
+This project has been submitted and graded.
